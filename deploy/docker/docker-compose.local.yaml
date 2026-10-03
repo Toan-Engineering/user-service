@@ -1,0 +1,38 @@
+name: user-service
+
+services:
+  user-service:
+    build:
+      context: ../..
+      dockerfile: .dockerfile
+      target: deploy
+      pull: true
+
+    image: user-service:local
+
+    restart: unless-stopped
+    init: true
+
+    ports:
+      - "127.0.0.1:${APP_PORT:-3000}:3000"
+
+    environment:
+      NODE_ENVIRONMENT: development
+      PORT: 3000
+
+    read_only: true
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=64m
+
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"

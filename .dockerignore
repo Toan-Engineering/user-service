@@ -1,0 +1,62 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+coverage
+*.tsbuildinfo
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Tests
+test
+jest.config.ts
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Docker
+deploy/docker
+*.dockerfile
+docker-compose*.yml
+docker-compose*.yaml
+
+# Development tooling
+.oxlintrc.json
+.prettierrc
+eslint.config.mjs
+
+# IDE / Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp
+temp
+.cache
+
+# Testing / local artifacts
+.nyc_output
+jest-cache
+
+# Documentation / project files
+docs
+README.md
+CHANGELOG.md
