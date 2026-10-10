@@ -20,6 +20,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "bench": "vitest bench --run",
     "infra:local:start": "docker compose -f deploy/docker/docker-compose.local.yaml up -d",
     "infra:local:rebuild": "docker compose -f deploy/docker/docker-compose.local.yaml up -d --build",
     "infra:local:stop": "docker compose -f deploy/docker/docker-compose.local.yaml stop",
@@ -41,11 +42,13 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
+    "@codspeed/vitest-plugin": "^5.7.1",
     "@eslint/js": "^10.0.1",
     "@nestjs/cli": "^12.0.0",
     "@nestjs/mau": "^0.2.6",
     "@nestjs/schematics": "^12.0.0",
     "@nestjs/testing": "^12.0.1",
+    "@swc/core": "^1.16.13",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.0",
@@ -66,6 +69,9 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^6.0.2",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "^8.70.0",
+    "unplugin-swc": "^2.0.0",
+    "vite": "^7.3.7",
+    "vitest": "^4.1.11"
   }
 }
