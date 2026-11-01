@@ -13,7 +13,12 @@
     "pnpm-lock.yaml",
     "dist/**",
     "node_modules/**",
-    "src/models/**"
+    "src/models/**",
+    "src/libs/database/prisma/migrations/**",
+    "src/libs/database/prisma/contract.json",
+    "src/libs/database/prisma/contract.d.ts",
+    "src/libs/database/prisma/db.ts",
+    "prisma.config.ts"
   ],
   "rules": {
     "typescript/explicit-function-return-type": "error",

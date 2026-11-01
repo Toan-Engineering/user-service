@@ -1,0 +1,39 @@
+// use prisma-8
+native_enum UserGender {
+  MALE = 'male'
+  FEMALE = 'female'
+  OTHER = 'other'
+
+  @@map("user_gender")
+}
+
+native_enum UserStatus {
+  ACTIVE = 'active'
+  INACTIVE = 'inactive'
+  BANNED = 'banned'
+
+  @@map("user_status")
+}
+
+model User {
+  id          Uuid                 @id @onCreate(uuid(7))
+  email       String?
+  phoneNumber VarChar(11)?
+  username    String?              @unique
+  firstName   String               @map("first_name")
+  lastName    String?              @map("last_name")
+  description String?
+  gender      pg.enum(UserGender)?
+  address     String?
+  dateOfBirth Date?                @map("date_of_birth")
+  status      pg.enum(UserStatus)  @default("active")
+  createdAt   temporal.CreatedAt @map("created_at")
+  updatedAt   temporal.UpdatedAt @map("updated_at")
+  deletedAt   Timestamptz?         @map("deleted_at")
+
+  @@index([email], where: sql`"deleted_at" IS NULL`, unique: true)
+
+  @@index([phoneNumber], where: sql`"deleted_at" IS NULL`, unique: true)
+
+  @@map("user")
+}
